@@ -1,5 +1,5 @@
 // Core
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Platform } from "react-native";
 import { colors } from "../../constants";
 
 export const CategoryItem = ({ title, color, onPress }) => {
@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
     height: 150,
     elevation: 4,
     borderRadius: 10,
+    overflow: Platform.OS === "android" ? "hidden" : "visible",
     backgroundColor: colors.white,
     shadowColor: colors.black,
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
-    overflow: "hidden",
   },
   innerContainer: {
     flex: 1,
