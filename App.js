@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Screens
 import { CategoriesScreen, MealsOverviewScreen } from "./screens";
+import { colors } from "./constants";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,11 +34,36 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
-          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: "#36273C",
+            },
+            headerTintColor: colors.white,
+            contentStyle: {
+              backgroundColor: "#503E57",
+            },
+          }}
+        >
+          <Stack.Screen
+            name="MealCategories"
+            component={CategoriesScreen}
+            options={{
+              title: "All Categories",
+            }}
+          />
+          <Stack.Screen
+            name="MealsOverview"
+            component={MealsOverviewScreen}
+            options={{
+              headerBackTitle: "Back",
+              headerBackTitleStyle: {
+                fontFamily: "roboto-700",
+              },
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
