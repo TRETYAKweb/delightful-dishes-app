@@ -1,5 +1,6 @@
 // Core
 import { FlatList } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 // Components
 import { CategoryItem } from "../../components";
@@ -7,10 +8,14 @@ import { CategoryItem } from "../../components";
 // Data
 import { CATEGORIES } from "../../data/dummy-data";
 
-export const CategoriesScreen = ({ navigation }) => {
+export const CategoriesScreen = () => {
+  const navigation = useNavigation();
+
   const renderCategoryItem = ({ item }) => {
     const pressHandler = () => {
-      navigation.navigate("MealsOverview");
+      navigation.navigate("MealsOverview", {
+        categoryId: item.id,
+      });
     };
 
     return (
