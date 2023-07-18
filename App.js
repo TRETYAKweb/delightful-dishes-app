@@ -1,6 +1,5 @@
 // Core
 import { useEffect } from "react";
-import { StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -8,7 +7,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // Screens
-import { CategoriesScreen, MealsOverviewScreen } from "./screens";
+import {
+  CategoriesScreen,
+  MealsOverviewScreen,
+  MealDetailsScreen,
+} from "./screens";
 import { colors } from "./constants";
 
 const Stack = createNativeStackNavigator();
@@ -45,6 +48,10 @@ export default function App() {
             contentStyle: {
               backgroundColor: "#503E57",
             },
+            headerBackTitle: "Back",
+            headerBackTitleStyle: {
+              fontFamily: "roboto-700",
+            },
           }}
         >
           <Stack.Screen
@@ -54,20 +61,13 @@ export default function App() {
               title: "All Categories",
             }}
           />
+          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
           <Stack.Screen
-            name="MealsOverview"
-            component={MealsOverviewScreen}
-            options={{
-              headerBackTitle: "Back",
-              headerBackTitleStyle: {
-                fontFamily: "roboto-700",
-              },
-            }}
+            name="MealDetailsScreen"
+            component={MealDetailsScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>
     </>
   );
 }
-
-const styles = StyleSheet.create({});
