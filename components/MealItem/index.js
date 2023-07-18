@@ -1,3 +1,4 @@
+// Core
 import {
   View,
   Text,
@@ -6,39 +7,47 @@ import {
   StyleSheet,
   Platform,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+// Components
+import { MealDetails } from "../MealDetails";
+
+// Colors
 import { colors } from "../../constants";
 
 export const MealItem = ({
+  id,
   title,
   imageUrl,
   duration,
   complexity,
   affordability,
 }) => {
+  const navigate = useNavigation();
+
+  const pressHandler = () => {
+    navigate.navigate("MealDetailsScreen", {
+      mealId: id,
+    });
+  };
+
   return (
     <View style={styles.mainContainer}>
       <Pressable
-        android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
+        android_ripple={{ color: "#ccc" }}
+        onPress={pressHandler}
       >
         <View style={styles.innerContainer}>
           <View>
             <Image style={styles.image} source={{ uri: imageUrl }} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <View style={styles.detailsContainer}>
-              <Text style={styles.detailsText}>{duration}m</Text>
-            </View>
-            <View style={styles.detailsContainer}>
-              <Text style={styles.detailsText}>{complexity.toUpperCase()}</Text>
-            </View>
-            <View style={styles.detailsContainer}>
-              <Text style={styles.detailsText}>
-                {affordability.toUpperCase()}
-              </Text>
-            </View>
-          </View>
+          <MealDetails
+            duration={duration}
+            complexity={complexity}
+            affordability={affordability}
+          />
         </View>
       </Pressable>
     </View>
@@ -69,23 +78,6 @@ const styles = StyleSheet.create({
     fontFamily: "gilroy-800",
     fontSize: 24,
     margin: 15,
-  },
-  details: {
-    marginHorizontal: 15,
-    marginBottom: 20,
-    flexDirection: "row",
-  },
-  detailsContainer: {
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    backgroundColor: "#565DD7",
-    borderRadius: 1000,
-    marginRight: 5,
-  },
-  detailsText: {
-    fontFamily: "roboto-700",
-    fontSize: 12,
-    color: colors.white,
   },
   buttonPressed: {
     opacity: 0.75,
