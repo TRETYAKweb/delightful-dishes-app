@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   },
   buttonPressed: {
     opacity: 0.25,
-    backgroundColor: colors.white,
   },
   title: {
     fontFamily: "gilroy-800",
