@@ -2,9 +2,9 @@ import { StyleSheet, View, Text } from "react-native";
 
 import { colors } from "../../constants";
 
-export const MealDetails = ({ duration, complexity, affordability }) => {
+export const MealDetails = ({ duration, complexity, affordability, style }) => {
   return (
-    <View style={styles.details}>
+    <View style={[styles.details, style]}>
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>{duration}m</Text>
       </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   detailsContainer: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    backgroundColor: "#565DD7",
+    backgroundColor: colors.accent500,
     borderRadius: 1000,
     marginRight: 5,
   },
