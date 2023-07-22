@@ -15,7 +15,9 @@ export const MealDetailsScreen = () => {
   const mealId = useRoute().params.mealId;
   const selectedMeal = MEALS.find((item) => item.id === mealId);
 
-  const headerBtnPressHandler = () => console.log(`It's OK!`);
+  const headerBtnPressHandler = () => {
+    console.log(`It's OK!`);
+  };
 
   useLayoutEffect(() => {
     navigate.setOptions({
@@ -23,7 +25,7 @@ export const MealDetailsScreen = () => {
         return (
           <IconButton
             color="white"
-            name="star"
+            name="heart-outline"
             onPress={headerBtnPressHandler}
           />
         );
