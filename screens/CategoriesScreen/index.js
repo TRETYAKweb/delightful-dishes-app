@@ -1,5 +1,5 @@
 // Core
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 // Components
