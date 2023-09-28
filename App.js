@@ -6,7 +6,8 @@ import * as SplashScreen from "expo-splash-screen";
 
 // lib
 import { Navigation } from "./lib/Navigation";
-import { FavoritesContextProvider } from "./lib/context/favorites-context";
+import { Provider } from "react-redux";
+import { store } from "./lib/store";
 
 export default function App() {
   SplashScreen.preventAutoHideAsync();
@@ -30,9 +31,9 @@ export default function App() {
   return (
     <>
       <StatusBar style="light" />
-      <FavoritesContextProvider>
+      <Provider store={store}>
         <Navigation />
-      </FavoritesContextProvider>
+      </Provider>
     </>
   );
 }
