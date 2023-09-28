@@ -23,8 +23,8 @@ export const CategoryItem = ({ title, color, onPress }) => {
 const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
-    margin: 15,
     height: 150,
+    margin: 15,
     elevation: 4,
     borderRadius: 10,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
