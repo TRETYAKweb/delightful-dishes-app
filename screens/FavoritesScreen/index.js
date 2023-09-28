@@ -1,15 +1,14 @@
-import { useContext } from "react";
-import { FavoritesContext } from "../../lib/context/favorites-context";
 import { MEALS } from "../../data/dummy-data";
 import { FlatList } from "react-native-gesture-handler";
 import { MealItem } from "../../components";
 import { StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 
 
 export const FavoritesScreen = () => {
 
-  const favoritesMealIds = useContext(FavoritesContext);
-  const filteredMeals = MEALS.filter(it => favoritesMealIds?.ids.includes(it.id));
+  const favoriteMealIds = useSelector((state) => state.favorite.ids)
+  const filteredMeals = MEALS.filter(it => favoriteMealIds.includes(it.id));
 
   const renderItem = ({item}) => {
 
@@ -25,7 +24,7 @@ export const FavoritesScreen = () => {
     return <MealItem {...mealItemProps} />
   }
 
-  if(favoritesMealIds.ids.length === 0) {
+  if(favoriteMealIds.length === 0) {
     return <View style={styles.root}>
         <Text style={styles.text}>You have no favorite meals yet.</Text>
       </View>
